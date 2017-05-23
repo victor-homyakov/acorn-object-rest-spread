@@ -1,0 +1,32 @@
+{
+  "name": "acorn-object-rest-spread",
+  "version": "1.0.0",
+  "description": "Support for Rest/Spread Properties in Acorn 5",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot --check-leaks test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://victor-homyakov@github.com/victor-homyakov/acorn-object-rest-spread.git"
+  },
+  "keywords": [
+    "acorn",
+    "rest",
+    "spread"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/victor-homyakov/acorn-object-rest-spread/issues"
+  },
+  "homepage": "https://github.com/victor-homyakov/acorn-object-rest-spread#readme",
+  "dependencies": {
+    "acorn": "^5.0.3"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.1"
+  }
+}
