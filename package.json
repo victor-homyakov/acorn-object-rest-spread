@@ -1,6 +1,6 @@
 {
   "name": "acorn-object-rest-spread",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Support for Rest/Spread Properties in Acorn 5",
   "main": "index.js",
   "scripts": {
