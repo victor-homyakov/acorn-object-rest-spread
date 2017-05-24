@@ -20,8 +20,12 @@ module.exports = function(acorn) {
         // code for spread is adapted from babylon parser
         if (this.type === tt.ellipsis) {
           prop = this.parseSpread()
-          prop.type = isPattern ? "RestProperty" : "SpreadProperty"
-          if (isPattern) prop.value = this.toAssignable(prop.argument, true)
+          if (isPattern) {
+            prop.type = "RestProperty"
+            prop.value = this.toAssignable(prop.argument, true)
+          } else {
+            prop.type = "SpreadProperty"
+          }
           node.properties.push(prop)
           continue
         }
@@ -52,8 +56,30 @@ module.exports = function(acorn) {
     return this.finishNode(node, isPattern ? "ObjectPattern" : "ObjectExpression")
   }
 
-  acorn.plugins.objectRestSpread = function objectRestSpreadPlugin() {
-    acorn.Parser.prototype.parseObj = parseObj;
+  acorn.plugins.objectRestSpread = function objectRestSpreadPlugin(parser) {
+    acorn.Parser.prototype.parseObj = parseObj
+
+    parser.extend("toAssignable", function(nextMethod) {
+      return function(node, isBinding) {
+        if (this.options.ecmaVersion >= 6 && node && node.type === "ObjectExpression") {
+          node.type = "ObjectPattern"
+
+          for (var i = 0; i < node.properties.length; i++) {
+            var prop = node.properties[i]
+            if (prop.kind === "init") {
+              this.toAssignable(prop.value, isBinding)
+            } else if (prop.type === "SpreadProperty") {
+              prop.value = this.toAssignable(prop.argument, isBinding)
+            } else {
+              this.raise(prop.key.start, "Object pattern can't contain getter or setter")
+            }
+          }
+          return node
+        }
+
+        return nextMethod.call(this, node, isBinding)
+      }
+    })
   };
 
   return acorn;
