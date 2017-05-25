@@ -24,7 +24,7 @@ module.exports = function(acorn) {
             prop.type = "RestElement"
             prop.value = this.toAssignable(prop.argument, true)
           } else {
-            prop.type = "SpreadProperty"
+            prop.type = "SpreadElement"
           }
           node.properties.push(prop)
           continue
@@ -68,7 +68,7 @@ module.exports = function(acorn) {
             var prop = node.properties[i]
             if (prop.kind === "init") {
               this.toAssignable(prop.value, isBinding)
-            } else if (prop.type === "SpreadProperty") {
+            } else if (prop.type === "SpreadElement") {
               prop.value = this.toAssignable(prop.argument, isBinding)
             } else {
               this.raise(prop.key.start, "Object pattern can't contain getter or setter")
