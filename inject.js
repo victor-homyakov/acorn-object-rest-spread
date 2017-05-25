@@ -21,7 +21,7 @@ module.exports = function(acorn) {
         if (this.type === tt.ellipsis) {
           prop = this.parseSpread()
           if (isPattern) {
-            prop.type = "RestProperty"
+            prop.type = "RestElement"
             prop.value = this.toAssignable(prop.argument, true)
           } else {
             prop.type = "SpreadProperty"

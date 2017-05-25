@@ -563,7 +563,7 @@ describe('acorn-object-rest-spread plugin', function() {
             },
             "properties": [
               {
-                "type": "RestProperty",
+                "type": "RestElement",
                 "start": 5,
                 "end": 9,
                 "loc": {
