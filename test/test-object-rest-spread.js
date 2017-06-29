@@ -80,7 +80,7 @@ describe('acorn-object-rest-spread plugin', function() {
             },
             "properties": [
               {
-                "type": "SpreadProperty",
+                "type": "SpreadElement",
                 "start": 9,
                 "end": 13,
                 "loc": {
@@ -231,7 +231,7 @@ describe('acorn-object-rest-spread plugin', function() {
               }
             },
             {
-              "type": "SpreadProperty",
+              "type": "SpreadElement",
               "start": 8,
               "end": 12,
               "loc": {
@@ -349,7 +349,7 @@ describe('acorn-object-rest-spread plugin', function() {
             }
           },
           {
-            "type": "SpreadProperty",
+            "type": "SpreadElement",
             "start": 5,
             "end": 9,
             "loc": {
@@ -431,7 +431,7 @@ describe('acorn-object-rest-spread plugin', function() {
             }
           },
           {
-            "type": "SpreadProperty",
+            "type": "SpreadElement",
             "start": 14,
             "end": 18,
             "loc": {
@@ -563,7 +563,7 @@ describe('acorn-object-rest-spread plugin', function() {
             },
             "properties": [
               {
-                "type": "RestProperty",
+                "type": "RestElement",
                 "start": 5,
                 "end": 9,
                 "loc": {
@@ -761,7 +761,7 @@ describe('acorn-object-rest-spread plugin', function() {
                     }
                   },
                   {
-                    "type": "SpreadProperty",
+                    "type": "SpreadElement",
                     "argument": {
                       "type": "Identifier",
                       "name": "props",
