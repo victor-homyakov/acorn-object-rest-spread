@@ -31,7 +31,7 @@ describe('acorn-object-rest-spread plugin', function() {
   }, {}));
 
   it('should load all test cases', function() {
-    assert.equal(testCases.length, 5);
+    assert.equal(testCases.length, 6);
   });
 
   function readTestData(name, ext) {
